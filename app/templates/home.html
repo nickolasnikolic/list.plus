@@ -18,7 +18,7 @@
 <hr/>
 <section class="lists clearfix">
   <div class="col-sm-12">
-    <p>search lists:<input type="text" placeholder="filter lists to just those you want" ng-model="searchText"></p>
+    <p>filter lists:<input type="text" placeholder="to just those you want" ng-model="searchText"></p>
   </div>
   <article class="list col-sm-12 col-md-3" ng-repeat="list in lists | filter:searchText">
     <div><h2>{{list.name}}</h2></div>
