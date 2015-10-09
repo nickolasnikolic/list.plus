@@ -157,7 +157,7 @@ blindApp.controller('AdminController', ['$scope', '$state', 'globals', function(
 
     var book = $scope.classes[which].items[index];
 
-    $scope.classes[which].books.splice( index, 1 );
+    $scope.classes[which].items.splice( index, 1 );
 
     //remove from db
     $.post('../api/admin/remove/book/',{ 'bookid': book.id })
