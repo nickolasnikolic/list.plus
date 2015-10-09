@@ -20,7 +20,7 @@
   <article class="list" ng-repeat="list in lists">
     <div><h2>{{list.name}}</h2></div>
     <ul>
-      <li ng-repeat="item in list">{{item.title}}</li>
+      <li ng-repeat="item in list.items">{{item.title}}</li>
     </ul>
     <div><p><a target="_blank" ng-href="{{later}}">click here to buy list</a></p></div>
   </article>
