@@ -1,6 +1,6 @@
 
 
-<section class="col-sm-12 login">
+<section class="col-sm-12 login col-md-3 col-md-offset-9">
   <form>
     <input id="username" type="text" name="username" placeholder="email"></input>
     <input id="password" type="password" name="password" placeholder="password"></input>
@@ -17,7 +17,7 @@
 </section>
 
 <section class="lists">
-  <p><input type="text" ng-model="searchText"></p>
+  <p>search lists:<input type="text" ng-model="searchText"></p>
   <article class="list col-sm-12 col-md-3" ng-repeat="list in lists | filter:searchText">
     <div><h2>{{list.name}}</h2></div>
     <ul>
