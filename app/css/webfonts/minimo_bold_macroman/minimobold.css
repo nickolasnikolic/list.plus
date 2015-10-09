@@ -1,0 +1,37 @@
+/*
+ * Web Fonts from fontspring.com
+ *
+ * All OpenType features and all extended glyphs have been removed.
+ * Fully installable fonts can be purchased at http://www.fontspring.com
+ *
+ * The fonts included in this stylesheet are subject to the End User License you purchased
+ * from Fontspring. The fonts are protected under domestic and international trademark and 
+ * copyright law. You are prohibited from modifying, reverse engineering, duplicating, or
+ * distributing this font software.
+ *
+ * (c) 2010-2015 Fontspring
+ *
+ *
+ *
+ *
+ * The fonts included are copyrighted by the vendor listed below.
+ *
+ * Vendor:      Ahmet Altun
+ * License URL: http://www.fontspring.com/licenses/ahmet-altun/webfont
+ *
+ *
+ */
+
+@font-face {
+    font-family: 'minimobold';
+    src: url('Minimo-Bold-webfont.eot');
+    src: url('Minimo-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Minimo-Bold-webfont.woff2') format('woff2'),
+         url('Minimo-Bold-webfont.woff') format('woff'),
+         url('Minimo-Bold-webfont.ttf') format('truetype'),
+         url('Minimo-Bold-webfont.svg#minimobold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
