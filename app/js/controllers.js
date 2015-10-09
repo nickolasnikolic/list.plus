@@ -1,7 +1,6 @@
 blindApp.controller('IndexController', ['$scope', '$state', 'globals', function($scope, $state, globals) {}])
 
 blindApp.controller('HomeController', ['$scope', '$state', 'globals', function($scope, $state, globals) {
-  document.title = 'blindworm - home'; //set the page title
 
   //collect user/pass
   //if login is super secret
@@ -70,7 +69,6 @@ blindApp.controller('HomeController', ['$scope', '$state', 'globals', function($
 }])
 
 blindApp.controller('AdminController', ['$scope', '$state', 'globals', function($scope, $state, globals) {
-  document.title = 'blindworm - admin'; //set the page title
 
   //if the username isn't set, return home for login
   if( globals.getUserId() == '' ){
@@ -165,7 +163,7 @@ blindApp.controller('AdminController', ['$scope', '$state', 'globals', function(
   $scope.generateQrCode = function( whichClass ){
     $('#qrcode').empty();
 
-    $scope.qrcodeurl = 'https://blind.herokuapp.com'; //site root...
+    $scope.qrcodeurl = 'https://quickplus.herokuapp.com'; //site root...
     $scope.qrcodeurl += '/api/bouncy/';
 
     var thisClass = $scope.classes[whichClass];
@@ -176,7 +174,4 @@ blindApp.controller('AdminController', ['$scope', '$state', 'globals', function(
 
 }])
 
-blindApp.controller('ContactController', ['$scope', '$state', function($scope, $state) {
-  document.title = 'blindworm - contact'; //set the page title
-  //send self email
-}])
+blindApp.controller('ContactController', ['$scope', '$state', function($scope, $state) {}])
