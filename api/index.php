@@ -16,6 +16,8 @@ $app = new \Slim\Slim();
 
 $app->get('/home', function(){
 
+  //get the administrator
+
   $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
   $server = $url["host"];
@@ -24,11 +26,26 @@ $app->get('/home', function(){
   $database = substr($url["path"], 1);
 
   $db = new PDO("mysql:host=$server;dbname=$database;charset=utf8", $user, $pass);
-  $stmtItems = $db->prepare('SELECT * FROM items ORDER BY list ASC;');
-  $stmtItems->execute();
-  $resultItems = $stmtItems->fetchAll(PDO::FETCH_ASSOC);
 
-  echo json_encode($resultItems);
+  //get the classes an administrator teaches
+  $stmtClasses = $db->prepare('SELECT * FROM lists;');
+  $stmtClasses->bindParam( ':administrator', $administrator );
+  $stmtClasses->execute();
+  $resultClasses = $stmtClasses->fetchAll(PDO::FETCH_ASSOC);
+
+  //then for each
+  foreach ($resultClasses as &$class) {
+    //get the books from that class
+    $stmtBooks = $db->prepare('SELECT * FROM items WHERE list = :classid;');
+    $stmtBooks->bindParam( ':classid', $class['id'] );
+    $stmtBooks->execute();
+    $resultBooks = $stmtBooks->fetchAll(PDO::FETCH_ASSOC);
+    //then attach them to the appropriate class for this administrator
+    $class['items'] = $resultBooks;
+  }
+
+  //return as json
+  echo json_encode( $resultClasses );
 
 });
 
