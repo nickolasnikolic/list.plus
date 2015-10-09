@@ -2,9 +2,9 @@
 <div class="container col-lg-12 col-sm-12">
   <p><a id="logout" class="btn btn-danger" ng-click="logout()">log out</a></p>
   <div class="mainWorkWindow">
-    Classes: <a data-toggle='modal' data-target="#myAddClassModal">(add a class)</a>
+    Lists: <a data-toggle='modal' data-target="#myAddClassModal">(add a list)</a>
     <table class="table table-responsive">
-      <thead><th>list name</th><th colspan="2">list items</th></thead>
+      <thead><th colspan="2">list name</th><th>list items</th></thead>
       <tbody>
         <tr ng-show="!classes.length">
           <td colspan="3">
@@ -14,10 +14,9 @@
         </tr>
         <tr ng-repeat="class in classes track by $index" ng-init="classIndex = $index">
           <td>{{class.name}} <a data-toggle='modal' data-target="#myClassModal" ng-click="removeClass(classIndex, class.id)">(remove)</a></td>
-          <td>{{class.classnumber}}</td>
           <td>
             <ol>
-              <li ng-repeat="book in class.books track by $index">{{book.title}} - {{book.isbn}} - <a ng-click="removeBook($index, classIndex)">(remove)</a></li>
+              <li ng-repeat="item in class.items track by $index">{{item.title}} - {{item.isbn}} - <a ng-click="removeBook($index, classIndex)">(remove)</a></li>
               <a  ng-mouseover="frustrating(classIndex, class.id)" class="addBookLink" data-toggle='modal' data-target="#myModal">add an item</a>
             </ol>
           </td>
