@@ -14,6 +14,24 @@ error_reporting(-1);//tell me stuff
 
 $app = new \Slim\Slim();
 
+$app->get('/home', function(){
+
+  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+  $server = $url["host"];
+  $user = $url["user"];
+  $pass = $url["pass"];
+  $database = substr($url["path"], 1);
+
+  $db = new PDO("mysql:host=$server;dbname=$database;charset=utf8", $user, $pass);
+  $stmtItems = $db->prepare('SELECT * FROM items ORDER BY list ASC;');
+  $stmtItems->execute();
+  $resultItems = $stmtLists->fetchAll(PDO::FETCH_ASSOC);
+
+  echo json_encode($resultItems);
+
+});
+
 $app->post('/home', function(){
 
   if( !empty($_POST['username']) && !empty($_POST['password']) ){

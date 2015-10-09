@@ -16,6 +16,16 @@
   </article>
 </section>
 
+<section class="lists">
+  <article class="list" ng-repeat="list in lists">
+    <<div><h2>{{list.title}}</h2></div>
+    <ul>
+      <li ng-repeat="item in list">{{item.title}}</li>
+    </ul>
+    <div><p><a target="_blank" ng-href="{{later}}">click here to buy list</a></p></div>
+  </article>
+</section>
+
 <!-- Modal registration-->
 <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">

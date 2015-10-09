@@ -66,6 +66,13 @@ blindApp.controller('HomeController', ['$scope', '$state', 'globals', function($
 
   };
 
+  $.get('../api/home' )
+      .success(function(data){
+        console.log(data);
+        $scope.items = JSON.parse(data);
+        $scope.$apply();
+      });
+
 }])
 
 blindApp.controller('AdminController', ['$scope', '$state', 'globals', function($scope, $state, globals) {
