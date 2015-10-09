@@ -71,9 +71,9 @@ $app->post('/password', function(){
 
     # Now, compose and send your message.
     $msg->sendMessage($domain, array(
-        'from'    => 'info@blindworm.me',
+        'from'    => 'info@quick.plus',
         'to'      => $email,
-        'subject' => 'Your blindworm.me password request.',
+        'subject' => 'Your quick.plus password request.',
         'text'    => "Your requested password is: \n{$password}"
     ));
 
@@ -126,7 +126,7 @@ $app->get('/admin/:administrator', function($administrator){
   $db = new PDO("mysql:host=$server;dbname=$database;charset=utf8", $user, $pass);
 
   //get the classes an administrator teaches
-  $stmtClasses = $db->prepare('SELECT * FROM classes WHERE prof = :administrator;');
+  $stmtClasses = $db->prepare('SELECT * FROM lists WHERE list_owner = :administrator;');
   $stmtClasses->bindParam( ':administrator', $administrator );
   $stmtClasses->execute();
   $resultClasses = $stmtClasses->fetchAll(PDO::FETCH_ASSOC);
@@ -134,12 +134,12 @@ $app->get('/admin/:administrator', function($administrator){
   //then for each
   foreach ($resultClasses as &$class) {
     //get the books from that class
-    $stmtBooks = $db->prepare('SELECT * FROM books WHERE class = :classid;');
+    $stmtBooks = $db->prepare('SELECT * FROM items WHERE list = :classid;');
     $stmtBooks->bindParam( ':classid', $class['id'] );
     $stmtBooks->execute();
     $resultBooks = $stmtBooks->fetchAll(PDO::FETCH_ASSOC);
     //then attach them to the appropriate class for this administrator
-    $class['books'] = $resultBooks;
+    $class['items'] = $resultBooks;
   }
 
   //return as json
@@ -164,14 +164,14 @@ $app->post('/admin/add/class/', function(){
   $database = substr($url["path"], 1);
 
   $db = new PDO("mysql:host=$server;dbname=$database;charset=utf8", $user, $pass);
-  $stmtUserId = $db->prepare('INSERT INTO classes (name, classnumber, prof) VALUES (:name, :number, :prof);');
+  $stmtUserId = $db->prepare('INSERT INTO lists (name, list_owner) VALUES (:name, :prof);');
   $stmtUserId->bindParam( ':name', $class );
   $stmtUserId->bindParam( ':number', $number );
   $stmtUserId->bindParam( ':prof', $administrator );
   $stmtUserId->execute();
 
   //return the list of classes with generated ids intact
-  $stmtClasses = $db->prepare('SELECT * FROM classes WHERE prof = :administrator;');
+  $stmtClasses = $db->prepare('SELECT * FROM lists WHERE list_owner = :administrator;');
   $stmtClasses->bindParam( ':administrator', $administrator );
   $stmtClasses->execute();
   $resultClasses = $stmtClasses->fetchAll(PDO::FETCH_ASSOC);
@@ -194,7 +194,7 @@ $app->post('/admin/remove/class/', function(){
   $database = substr($url["path"], 1);
 
   $db = new PDO("mysql:host=$server;dbname=$database;charset=utf8", $user, $pass);
-  $stmtUserId = $db->prepare('DELETE FROM classes WHERE id = :id;');
+  $stmtUserId = $db->prepare('DELETE FROM lists WHERE id = :id;');
   $stmtUserId->bindParam( ':id', $id );
   $stmtUserId->execute();
 
@@ -219,14 +219,14 @@ $app->post('/admin/add/book/', function(){
   $database = substr($url["path"], 1);
 
   $db = new PDO("mysql:host=$server;dbname=$database;charset=utf8", $user, $pass);
-  $stmtUserId = $db->prepare('INSERT INTO books (title, isbn, class) VALUES (:title, :isbn, :class);');
+  $stmtUserId = $db->prepare('INSERT INTO items (title, isbn, list) VALUES (:title, :isbn, :class);');
   $stmtUserId->bindParam( ':title', $name );
   $stmtUserId->bindParam( ':isbn', $isbn );
   $stmtUserId->bindParam( ':class', $classid );
   $stmtUserId->execute();
 
   //get the classes an administrator teaches
-  $stmtClasses = $db->prepare('SELECT * FROM classes WHERE prof = :administrator;');
+  $stmtClasses = $db->prepare('SELECT * FROM lists WHERE list_owner = :administrator;');
   $stmtClasses->bindParam( ':administrator', $administrator );
   $stmtClasses->execute();
   $resultClasses = $stmtClasses->fetchAll(PDO::FETCH_ASSOC);
@@ -234,12 +234,12 @@ $app->post('/admin/add/book/', function(){
   //then for each
   foreach ($resultClasses as &$class) {
     //get the books from that class
-    $stmtBooks = $db->prepare('SELECT * FROM books WHERE class = :classid;');
+    $stmtBooks = $db->prepare('SELECT * FROM items WHERE list = :classid;');
     $stmtBooks->bindParam( ':classid', $class['id'] );
     $stmtBooks->execute();
     $resultBooks = $stmtBooks->fetchAll(PDO::FETCH_ASSOC);
     //then attach them to the appropriate class for this administrator
-    $class['books'] = $resultBooks;
+    $class['items'] = $resultBooks;
   }
 
   //return as json
@@ -262,7 +262,7 @@ $app->post('/admin/remove/book/', function(){
   $database = substr($url["path"], 1);
 
   $db = new PDO("mysql:host=$server;dbname=$database;charset=utf8", $user, $pass);
-  $stmtUserId = $db->prepare('DELETE FROM books WHERE id = :bookid;');
+  $stmtUserId = $db->prepare('DELETE FROM items WHERE id = :bookid;');
 
   $stmtUserId->bindParam( ':bookid', $bookid );
 
@@ -284,7 +284,7 @@ $app->get('/bouncy/:administrator/:thisclassid', function($administrator, $thisc
 
   //get the books from that class
   $db = new PDO("mysql:host=$server;dbname=$database;charset=utf8", $user, $pass);
-  $stmtBooks = $db->prepare('SELECT * FROM books WHERE class = :class');
+  $stmtBooks = $db->prepare('SELECT * FROM items WHERE list = :class');
   $stmtBooks->bindParam( ':class', $thisclassid );
   $stmtBooks->execute();
   $resultingBooks = $stmtBooks->fetchAll(PDO::FETCH_ASSOC);
