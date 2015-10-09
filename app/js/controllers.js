@@ -15,11 +15,8 @@ blindApp.controller('HomeController', ['$scope', '$state', 'globals', function($
 
         if(data != 0){
           var holdingCell = JSON.parse(data);
-          console.log(holdingCell);
           globals.setUserId( holdingCell[0].userid );
           globals.setUserEmail( username );
-
-          console.log(globals);
 
           $state.go('admin');
         }
@@ -66,9 +63,9 @@ blindApp.controller('HomeController', ['$scope', '$state', 'globals', function($
 
   };
 
+  //go get the lists
   $.get('../api/home' )
       .success(function(data){
-        console.log(data);
         $scope.lists = JSON.parse(data);
         $scope.$apply();
       });
@@ -86,7 +83,6 @@ blindApp.controller('AdminController', ['$scope', '$state', 'globals', function(
 
   $.get('../api/admin/' + globals.getUserId() )
     .success(function(data){
-      console.log(data);
       $scope.classes = JSON.parse(data);
       $scope.$apply();
     });
@@ -108,7 +104,6 @@ blindApp.controller('AdminController', ['$scope', '$state', 'globals', function(
         .success(function(data){
           $scope.classes = JSON.parse(data);
           $scope.$apply();
-          console.log('class added, response was:'); console.log(data);
         })
         .error(function(error){ console.log(error) });
   };
@@ -117,7 +112,6 @@ blindApp.controller('AdminController', ['$scope', '$state', 'globals', function(
   //remove class
   $scope.removeClass = function(index, classid){
     $scope.classes.splice( index, 1 );
-    //TODO remove from db
     $.post('../api/admin/remove/class/',{ 'id': classid });
   };
 
@@ -126,7 +120,7 @@ blindApp.controller('AdminController', ['$scope', '$state', 'globals', function(
   var classIndex = 0;
   $scope.frustrating = function(setTheBastard, classId){
     source = setTheBastard;
-    classIndex = classId
+    classIndex = classId;
   };
 
   //on add book
@@ -145,8 +139,6 @@ blindApp.controller('AdminController', ['$scope', '$state', 'globals', function(
         .success(function(data){
           $scope.classes = JSON.parse(data); //HACK refreshing whole list when single book is added
           $scope.$apply();
-          console.log('book added, response was:');
-          console.log(data);
         })
         .error(function(error){ console.log(error) });
   };
