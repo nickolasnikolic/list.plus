@@ -208,7 +208,19 @@ $app->post('/admin/add/class/', function(){
   $stmtClasses->execute();
   $resultClasses = $stmtClasses->fetchAll(PDO::FETCH_ASSOC);
 
-  echo json_encode($resultClasses);
+  //then for each
+  foreach ($resultClasses as &$class) {
+    //get the books from that class
+    $stmtBooks = $db->prepare('SELECT * FROM items WHERE list = :classid;');
+    $stmtBooks->bindParam( ':classid', $class['id'] );
+    $stmtBooks->execute();
+    $resultBooks = $stmtBooks->fetchAll(PDO::FETCH_ASSOC);
+    //then attach them to the appropriate class for this administrator
+    $class['items'] = $resultBooks;
+  }
+
+  //return as json
+  echo json_encode( $resultClasses );
 });
 
 //delete class
