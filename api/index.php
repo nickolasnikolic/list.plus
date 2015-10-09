@@ -29,7 +29,6 @@ $app->get('/home', function(){
 
   //get the classes an administrator teaches
   $stmtClasses = $db->prepare('SELECT * FROM lists;');
-  $stmtClasses->bindParam( ':administrator', $administrator );
   $stmtClasses->execute();
   $resultClasses = $stmtClasses->fetchAll(PDO::FETCH_ASSOC);
 
