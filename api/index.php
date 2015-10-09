@@ -186,7 +186,6 @@ $app->post('/admin/add/class/', function(){
   //pull the class details from the post
   $administrator = $_POST['admin'];
   $class = $_POST['title'];
-  $number = $_POST['number'];
 
   //set them in the db
 
@@ -200,7 +199,6 @@ $app->post('/admin/add/class/', function(){
   $db = new PDO("mysql:host=$server;dbname=$database;charset=utf8", $user, $pass);
   $stmtUserId = $db->prepare('INSERT INTO lists (name, list_owner) VALUES (:name, :prof);');
   $stmtUserId->bindParam( ':name', $class );
-  $stmtUserId->bindParam( ':number', $number );
   $stmtUserId->bindParam( ':prof', $administrator );
   $stmtUserId->execute();
 
