@@ -26,7 +26,7 @@ $app->get('/home', function(){
   $db = new PDO("mysql:host=$server;dbname=$database;charset=utf8", $user, $pass);
   $stmtItems = $db->prepare('SELECT * FROM items ORDER BY list ASC;');
   $stmtItems->execute();
-  $resultItems = $stmtLists->fetchAll(PDO::FETCH_ASSOC);
+  $resultItems = $stmtItems->fetchAll(PDO::FETCH_ASSOC);
 
   echo json_encode($resultItems);
 
