@@ -76,6 +76,27 @@ blindApp.controller('HomeController', ['$scope', '$state', 'globals', function($
       .success(function(data){
         $scope.lists = JSON.parse(data);
         $scope.$apply();
+
+        $('share-button').each(function(element, index){
+          new ShareButton(element,{
+            url: 'http://www.list.plus/app/#/shared/' + $scope.lists[index].list_owner + '/' + $scope.lists[index].id,
+            title: $scope.lists[index].name,
+            ui:{
+              flyout: 'bottom right'
+            },
+            networks: {
+              facebook: {
+                app_id: "865694990192440"
+              },
+              email:{ enabled: false },
+              pinterest:{ enabled: false },
+              reddit:{ enabled: false },
+              whatsapp:{ enabled: false },
+              email:{ enabled: false }
+            }
+          });
+        });
+
       });
 
 }])

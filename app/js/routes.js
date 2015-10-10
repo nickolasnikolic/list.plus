@@ -5,7 +5,7 @@ var blindApp = angular.module('blindApp', ['ui.router', 'ngSanitize', 'angular.f
 
       .state('home', {
         url: '/',
-        templateUrl: 'templates/home.html',
+        templateUrl: 'templates/home-test.html',
         controller: 'HomeController',
         onEnter: function($state) {
           console.log('home');
@@ -23,7 +23,7 @@ var blindApp = angular.module('blindApp', ['ui.router', 'ngSanitize', 'angular.f
 
       .state('shared', {
         url: '/shared/:userId/:listId',
-        templateUrl: 'templates/test.html',
+        templateUrl: 'templates/shared.html',
         controller: 'SharedController',
         onEnter: function($state) {
           console.log('shared');
