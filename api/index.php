@@ -42,7 +42,7 @@ $app->get('/home', function(){
     //then attach them to the appropriate class for this administrator
     $class['items'] = $resultBooks;
 
-    $stmtUser = $db->prepare('SELECT nickname FROM users WHERE id = :userid');
+    $stmtUser = $db->prepare('SELECT nickname FROM users WHERE userid = :userid');
     $stmtUser->bindParam(':userid', $class['list_owner']);
     $resultUser = $stmtUser->fetchAll(PDO::FETCH_ASSOC);
     $class['contributor'] = $resultUser;
