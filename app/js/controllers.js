@@ -176,4 +176,16 @@ blindApp.controller('AdminController', ['$scope', '$state', 'globals', function(
 
 }])
 
+blindApp.controller('SharedController', ['$scope', '$state', '$stateParams', function($scope, $state, $stateParams) {
+
+  var user = $stateParams.user;
+  var list = $stateParams.list;
+  //go get the lists
+  $.get('../api/shared/' + user + '/' + list )
+      .success(function(data){
+        $scope.lists = JSON.parse(data);
+        $scope.$apply();
+      });
+}])
+
 blindApp.controller('ContactController', ['$scope', '$state', function($scope, $state) {}])

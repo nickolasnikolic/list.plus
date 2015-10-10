@@ -76,6 +76,38 @@ $app->post('/home', function(){
   }
 });
 
+$app->get('/shared/:user/:list', function($user,$list){
+
+  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+  $server = $url["host"];
+  $user = $url["user"];
+  $pass = $url["pass"];
+  $database = substr($url["path"], 1);
+
+  $db = new PDO("mysql:host=$server;dbname=$database;charset=utf8", $user, $pass);
+
+  //get the classes an administrator teaches
+  $stmtClasses = $db->prepare('SELECT * FROM lists WHERE id = :listid LIMIT 1;');
+
+  $stmtClasses->bindParam(':listid', $list);
+  $stmtClasses->execute();
+  $resultClasses = $stmtClasses->fetchAll(PDO::FETCH_ASSOC);
+
+
+  //get the books from that class
+  $stmtBooks = $db->prepare('SELECT * FROM items WHERE list = :classid;');
+  $stmtBooks->bindParam( ':classid', $class['id'] );
+  $stmtBooks->execute();
+  $resultBooks = $stmtBooks->fetchAll(PDO::FETCH_ASSOC);
+  //then attach them to the appropriate class for this administrator
+  $resultClasses['items'] = $resultBooks;
+
+  //return as json
+  echo json_encode( $resultClasses );
+
+});
+
 $app->post('/password', function(){
   //get email from post info
   $email = $_POST['email'];
