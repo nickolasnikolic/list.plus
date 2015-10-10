@@ -76,7 +76,7 @@ $app->post('/home', function(){
   }
 });
 
-$app->get('/shared/:userid/:list', function($userid,$list){
+$app->get('/shared/:userid/:listid', function($userid,$listid){
 
   $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
@@ -90,16 +90,17 @@ $app->get('/shared/:userid/:list', function($userid,$list){
   //get the classes an administrator teaches
   $stmtClasses = $db->prepare('SELECT * FROM lists WHERE id = :listid LIMIT 1;');
 
-  $stmtClasses->bindParam(':listid', $list);
+  $stmtClasses->bindParam(':listid', $listid);
   $stmtClasses->execute();
   $resultClasses = $stmtClasses->fetchAll(PDO::FETCH_ASSOC);
 
 
   //get the books from that class
   $stmtBooks = $db->prepare('SELECT * FROM items WHERE list = :classid;');
-  $stmtBooks->bindParam( ':classid', $resultClasses['id'] );
+  $stmtBooks->bindParam( ':classid', $listid );
   $stmtBooks->execute();
   $resultBooks = $stmtBooks->fetchAll(PDO::FETCH_ASSOC);
+
   //then attach them to the appropriate class for this administrator
   $resultClasses['items'] = $resultBooks;
 
