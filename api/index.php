@@ -45,7 +45,7 @@ $app->get('/home', function(){
     $stmtUser = $db->prepare('SELECT nickname FROM users WHERE userid = :userid;');
     $stmtUser->bindParam(':userid', $class['list_owner']);
     $resultUser = $stmtUser->fetchAll(PDO::FETCH_ASSOC);
-    $class['contributor'] = $resultUser;
+    $class['contributor'] = 'anon';//$resultUser;
   }
 
   //return as json
