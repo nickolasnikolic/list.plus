@@ -32,6 +32,12 @@ $app->get('/home', function(){
   $stmtClasses->execute();
   $resultClasses = $stmtClasses->fetchAll(PDO::FETCH_ASSOC);
 
+
+  $stmtUser = $db->prepare('SELECT nickname FROM users WHERE userid = :userid;');
+  $stmtUser->bindParam(':userid', $resultClasses['list_owner']);
+  $resultUser = $stmtUser->fetch(PDO::FETCH_ASSOC);
+  $resultClasses['contributor'] = $resultUser;
+
   //then for each
   foreach ($resultClasses as &$class) {
     //get the books from that class
@@ -42,10 +48,6 @@ $app->get('/home', function(){
     //then attach them to the appropriate class for this administrator
     $class['items'] = $resultBooks;
 
-    $stmtUser = $db->prepare('SELECT nickname FROM users WHERE userid = :userid;');
-    $stmtUser->bindParam(':userid', $class['list_owner']);
-    $resultUser = $stmtUser->fetch(PDO::FETCH_ASSOC);
-    $class['contributor'] = $resultUser['name'];
   }
 
   //return as json
