@@ -23,7 +23,7 @@ var blindApp = angular.module('blindApp', ['ui.router', 'ngSanitize', 'angular.f
 
       .state('shared', {
         url: '/shared/:userId/:listId',
-        templateUrl: 'templates/shared.html',
+        templateUrl: 'templates/test.html',
         controller: 'SharedController',
         onEnter: function($state) {
           console.log('shared');

@@ -194,7 +194,23 @@ blindApp.controller('SharedController', ['$scope', '$state', '$stateParams', fun
         console.log(data);
         $scope.list = JSON.parse(data);
         $scope.$apply();
+
+        new ShareButton({
+          url: 'http://www.list.plus/app/#/shared/' + $scope.list.list_owner + '/' + $scope.list.id,
+          title: $scope.list.title,
+          networks: {
+            facebook: {
+              app_id: "865694990192440"
+            },
+            email:{
+              title: $scope.list.title,
+              description: 'http://www.list.plus/app/#/shared/' + $scope.list.list_owner + '/' + $scope.list.id
+            }
+          }
+        });
+
       });
+
 }])
 
 blindApp.controller('ContactController', ['$scope', '$state', function($scope, $state) {}])
