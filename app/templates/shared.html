@@ -1,12 +1,12 @@
-<section class="banner col-md-4 col-md-offset-8">
+<section class="banner col-sm-12 col-md-4 col-md-offset-8">
   <article class="description">
     <p>list.plus is a free service that lets you compile shopping lists and anyone can purchase them from Amazon.com&trade; in just one step.</p>
   </article>
 </section>
 <hr/>
-<section class="lists clearfix">
+<section class="lists clearfix col-sm-12">
   <article class="list col-sm-12 col-md-3">
-    <div><h2>{{list.name}}</h2></div>
+    <div><h2>{{list[0].name}}</h2></div>
     <ul>
       <li ng-repeat="item in list.items">{{item.title}}</li>
     </ul>
