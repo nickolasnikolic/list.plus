@@ -178,8 +178,8 @@ blindApp.controller('AdminController', ['$scope', '$state', 'globals', function(
 
 blindApp.controller('SharedController', ['$scope', '$state', '$stateParams', function($scope, $state, $stateParams) {
 
-  var user = $stateParams.userId;
-  var list = $stateParams.listId;
+  var userId = $stateParams.userId;
+  var listId = $stateParams.listId;
   //go get the lists
   $.get('../api/shared/' + userId + '/' + listId )
       .success(function(data){
