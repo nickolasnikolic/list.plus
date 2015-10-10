@@ -28,17 +28,9 @@ $app->get('/home', function(){
   $db = new PDO("mysql:host=$server;dbname=$database;charset=utf8", $user, $pass);
 
   //get the classes an administrator teaches
-  $stmtClasses = $db->prepare('SELECT * FROM lists;');
+  $stmtClasses = $db->prepare('SELECT lists.id, lists.name, lists.list_owner, users.nickname FROM lists JOIN users ON lists.list_owner = users.userid;');
   $stmtClasses->execute();
   $resultClasses = $stmtClasses->fetchAll(PDO::FETCH_ASSOC);
-
-  //attach attributions //HACK //todo later use a join to add attribution
-  foreach ($resultClasses as &$class) {
-    $stmtUser = $db->prepare('SELECT nickname FROM users WHERE userid = :list_owner;');
-    $stmtUser->bindParam(':list_owner', $class['list_owner']);
-    $resultUser = $stmtUser->fetchAll(PDO::FETCH_ASSOC);
-    $class['contributor'] = $resultUser;
-  }
 
   //then for each
   foreach ($resultClasses as &$class) {
