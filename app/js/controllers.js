@@ -66,7 +66,7 @@ blindApp.controller('HomeController', ['$scope', '$state', 'globals', function($
   $scope.shareFacebook = function( userId, listId ){
     FB.ui({
       method: 'share',
-      href: 'http://www.list.plus/app/#/shared/' + userId + '/' + listId,
+      href: 'http://list.plus/app/#/shared/' + userId + '/' + listId,
     }, function(response){});
   };
 
