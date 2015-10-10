@@ -183,6 +183,7 @@ blindApp.controller('SharedController', ['$scope', '$state', '$stateParams', fun
   //go get the lists
   $.get('../api/shared/' + user + '/' + list )
       .success(function(data){
+        console.log(data);
         $scope.lists = JSON.parse(data);
         $scope.$apply();
       });
