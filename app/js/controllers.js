@@ -202,10 +202,11 @@ blindApp.controller('SharedController', ['$scope', '$state', '$stateParams', fun
             facebook: {
               app_id: "865694990192440"
             },
-            email:{
-              title: $scope.list.title,
-              description: 'http://www.list.plus/app/#/shared/' + $scope.list.list_owner + '/' + $scope.list.id
-            }
+            email:{ enabled: false },
+            pinterest:{ enabled: false },
+            reddit:{ enabled: false },
+            whatsapp:{ enabled: false },
+            email:{ enabled: false }
           }
         });
 
