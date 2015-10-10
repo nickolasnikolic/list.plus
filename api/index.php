@@ -16,8 +16,6 @@ $app = new \Slim\Slim();
 
 $app->get('/home', function(){
 
-  //get the administrator
-
   $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
   $server = $url["host"];
