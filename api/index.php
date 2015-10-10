@@ -35,7 +35,7 @@ $app->get('/home', function(){
 
   $stmtUser = $db->prepare('SELECT nickname FROM users WHERE userid = :userid;');
   $stmtUser->bindParam(':userid', $resultClasses['list_owner']);
-  $resultUser = $stmtUser->fetch(PDO::FETCH_ASSOC);
+  $resultUser = $stmtUser->fetchAll(PDO::FETCH_ASSOC);
   $resultClasses['contributor'] = $resultUser;
 
   //then for each
@@ -47,7 +47,6 @@ $app->get('/home', function(){
     $resultBooks = $stmtBooks->fetchAll(PDO::FETCH_ASSOC);
     //then attach them to the appropriate class for this administrator
     $class['items'] = $resultBooks;
-
   }
 
   //return as json
