@@ -97,7 +97,7 @@ $app->get('/shared/:user/:list', function($user,$list){
 
   //get the books from that class
   $stmtBooks = $db->prepare('SELECT * FROM items WHERE list = :classid;');
-  $stmtBooks->bindParam( ':classid', $class['id'] );
+  $stmtBooks->bindParam( ':classid', $resultClasses['id'] );
   $stmtBooks->execute();
   $resultBooks = $stmtBooks->fetchAll(PDO::FETCH_ASSOC);
   //then attach them to the appropriate class for this administrator
