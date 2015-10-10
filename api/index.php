@@ -76,7 +76,7 @@ $app->post('/home', function(){
   }
 });
 
-$app->get('/shared/:user/:list', function($user,$list){
+$app->get('/shared/:userid/:list', function($userid,$list){
 
   $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
