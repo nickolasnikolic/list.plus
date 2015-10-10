@@ -195,7 +195,7 @@ blindApp.controller('SharedController', ['$scope', '$state', '$stateParams', fun
         $scope.list = JSON.parse(data);
         $scope.$apply();
 
-        new ShareButton('share-button',{
+        new ShareButton({
           url: 'http://www.list.plus/app/#/shared/' + $scope.list.list_owner + '/' + $scope.list.id,
           title: $scope.list.title,
           networks: {
