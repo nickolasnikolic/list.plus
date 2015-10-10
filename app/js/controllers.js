@@ -77,7 +77,7 @@ blindApp.controller('HomeController', ['$scope', '$state', 'globals', function($
         $scope.lists = JSON.parse(data);
         $scope.$apply();
 
-        $('share-button').each(function(element, index){
+        $('share-button').each(function(index, element){
           new ShareButton(element,{
             url: 'http://www.list.plus/app/#/shared/' + $scope.lists[index].list_owner + '/' + $scope.lists[index].id,
             title: $scope.lists[index].name,
