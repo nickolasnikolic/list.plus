@@ -32,11 +32,13 @@ $app->get('/home', function(){
   $stmtClasses->execute();
   $resultClasses = $stmtClasses->fetchAll(PDO::FETCH_ASSOC);
 
-
-  $stmtUser = $db->prepare('SELECT userid, nickname FROM users WHERE userid = :userid;');
-  $stmtUser->bindParam(':userid', $resultClasses['list_owner']);
-  $resultUser = $stmtUser->fetchAll(PDO::FETCH_ASSOC);
-  $resultClasses['contributor'] = $resultUser['nickname'];
+  //attach attributions //HACK //todo later use a join to add attribution
+  foreach ($resultClasses as &$class) {
+    $stmtUser = $db->prepare('SELECT userid, nickname FROM users WHERE userid = :userid;');
+    $stmtUser->bindParam(':userid', $class['list_owner']);
+    $resultUser = $stmtUser->fetchAll(PDO::FETCH_ASSOC);
+    $class['contributor'] = $resultUser['nickname'];
+  }
 
   //then for each
   foreach ($resultClasses as &$class) {
