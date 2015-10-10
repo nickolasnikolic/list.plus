@@ -22,6 +22,7 @@
   </div>
   <article class="list col-sm-12 col-md-3" ng-repeat="list in lists | filter:searchText">
     <div><h2>{{list.name}}</h2></div>
+    <div><small>Contributed by: {{list.contributor||'anonymous'}}</small></div>
     <ul>
       <li ng-repeat="item in list.items">{{item.title}}</li>
     </ul>
