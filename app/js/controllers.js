@@ -100,6 +100,9 @@ blindApp.controller('AdminController', ['$scope', '$state', 'globals', function(
     var classNumber = $('#classNumber').val();
     var admin = globals.getUserId();
 
+    $('#classTitle').val('');
+    $('#classNumber').val('');
+
     $.post('../api/admin/add/class/',{ 'title': classTitle, 'number': classNumber, 'admin': admin })
         .success(function(data){
           $scope.classes = JSON.parse(data);
