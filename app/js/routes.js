@@ -5,7 +5,7 @@ var blindApp = angular.module('blindApp', ['ui.router', 'ngSanitize', 'angular.f
 
       .state('home', {
         url: '/',
-        templateUrl: 'templates/home-test.html',
+        templateUrl: 'templates/home.html',
         controller: 'HomeController',
         onEnter: function($state) {
           console.log('home');

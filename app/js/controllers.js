@@ -64,39 +64,11 @@ blindApp.controller('HomeController', ['$scope', '$state', 'globals', function($
 
   };
 
-  $scope.shareFacebook = function( userId, listId ){
-    FB.ui({
-      method: 'share',
-      href: 'http://list.plus/app/#/shared/' + userId + '/' + listId,
-    }, function(response){});
-  };
-
   //go get the lists
   $.get('../api/home' )
       .success(function(data){
         $scope.lists = JSON.parse(data);
         $scope.$apply();
-
-        $('share-button').each(function(index, element){
-          new ShareButton(element,{
-            url: $(element).attr('ng-href'),
-            title: $scope.lists[index].name,
-            ui:{
-              flyout: 'bottom right'
-            },
-            networks: {
-              facebook: {
-                app_id: "865694990192440"
-              },
-              email:{ enabled: false },
-              pinterest:{ enabled: false },
-              reddit:{ enabled: false },
-              whatsapp:{ enabled: false },
-              email:{ enabled: false }
-            }
-          });
-        });
-
       });
 
 }])
@@ -215,25 +187,6 @@ blindApp.controller('SharedController', ['$scope', '$state', '$stateParams', fun
         console.log(data);
         $scope.list = JSON.parse(data);
         $scope.$apply();
-
-        new ShareButton({
-          url: 'http://www.list.plus/app/#/shared/' + $scope.list[0].list_owner + '/' + $scope.list[0].id,
-          title: $scope.list.name,
-          ui:{
-            flyout: 'bottom right'
-          },
-          networks: {
-            facebook: {
-              app_id: "865694990192440"
-            },
-            email:{ enabled: false },
-            pinterest:{ enabled: false },
-            reddit:{ enabled: false },
-            whatsapp:{ enabled: false },
-            email:{ enabled: false }
-          }
-        });
-
       });
 
 }])
