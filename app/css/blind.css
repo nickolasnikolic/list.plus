@@ -27,3 +27,7 @@ footer{
 a{
     cursor: pointer;
 }
+
+.social-share > div{
+    margin-bottom: 1em;
+}
