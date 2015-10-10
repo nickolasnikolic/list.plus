@@ -25,7 +25,7 @@
     <div class="san-serif little-down-below" ng-if="list.nickname != null"><small>Contributed by: {{list.nickname}}</small></div>
     <ul>
       <li ng-repeat="item in list.items">
-        <a ng-href="http://www.amazon.com/gp/product/{{item.isbn}}/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN={{item.isbn}}&linkCode=as2&tag=blindworm03-20">
+        <a target="_blank" ng-href="http://www.amazon.com/gp/product/{{item.isbn}}/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN={{item.isbn}}&linkCode=as2&tag=blindworm03-20">
         {{item.title}}
         </a>
       </li>
