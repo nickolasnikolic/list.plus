@@ -41,6 +41,11 @@ $app->get('/home', function(){
     $resultBooks = $stmtBooks->fetchAll(PDO::FETCH_ASSOC);
     //then attach them to the appropriate class for this administrator
     $class['items'] = $resultBooks;
+
+    $stmtUser = $db->prepare('SELECT nickname FROM users WHERE id = :userid');
+    $stmtUser->bindParam(':userid', $class['list_owner']);
+    $resultUser = $stmtUser->fetchAll(PDO::FETCH_ASSOC);
+    $class['contributor'] = $resultUser;
   }
 
   //return as json
@@ -157,6 +162,7 @@ $app->post('/home/register/', function(){
 
     $username = $_POST['email'];
     $password = $_POST['password'];
+    $nickname = $_POST['nickname'];
 
 
     $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
@@ -167,9 +173,10 @@ $app->post('/home/register/', function(){
     $database = substr($url["path"], 1);
 
     $db = new PDO("mysql:host=$server;dbname=$database;charset=utf8", $user, $pass);
-    $stmtUserId = $db->prepare('INSERT INTO users ( email, password ) VALUES (:email, :password)');
+    $stmtUserId = $db->prepare('INSERT INTO users ( email, password, nickname ) VALUES (:email, :password, :nickname)');
     $stmtUserId->bindParam( ':email', $username );
     $stmtUserId->bindParam( ':password', $password );
+    $stmtUserId->bindParam( ':nickname', $nickname );
     $stmtUserId->execute();
 
     echo 1; //all is well
