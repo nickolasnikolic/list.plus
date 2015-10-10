@@ -8,7 +8,7 @@
   <article class="list col-sm-12 col-md-3">
     <div><h2>{{list[0].name}}</h2></div>
     <ul>
-      <li ng-repeat="item in list.items"><a type="amzn" asin="{{item.isbn}}">{{item.title}}</a></li>
+      <li ng-repeat="item in list.items">{{item.title}}</li>
     </ul>
     <div><p><a target="_blank" ng-href="http://list.plus/api/bouncy/{{list.list_owner}}/{{list.id}}">click here to buy above list all at once</a></p></div>
   </article>
