@@ -35,8 +35,9 @@ blindApp.controller('HomeController', ['$scope', '$state', 'globals', function($
 
     var username = $('#registrationEmail').val();
     var password = $('#registrationPassword').val();
+    var nickname = $('#registrationNickname').val();
 
-    $.post('../api/home/register/',{ 'email': username, 'password': password })
+    $.post('../api/home/register/',{ 'email': username, 'password': password, 'nickname': nickname })
       .success(function(data){
         if(data != 0){
           var holdingCell = JSON.parse(data);

@@ -153,7 +153,7 @@ $app->post('/password', function(){
 
 $app->post('/home/register/', function(){
 
-  if( !empty($_POST['email']) && !empty($_POST['password']) ){ //HACK
+  if( !empty($_POST['email']) && !empty($_POST['password']) ){
 
     $username = $_POST['email'];
     $password = $_POST['password'];
