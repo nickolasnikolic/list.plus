@@ -27,13 +27,6 @@
       <li ng-repeat="item in list.items"><a type="amzn" asin="{{item.isbn}}">{{item.title}}</a></li>
     </ul>
     <div class="little-up-top"><p><a target="_blank" ng-href="http://list.plus/api/bouncy/{{list.list_owner}}/{{list.id}}">click here to buy above list</a></p></div>
-    <div class="social-links">
-      <div class="fb-share-button" ng-href="http://www.list.plus/app/#/shared/{{list.list_owner}}/{{list.id}}" data-layout="button_count"></div>
-      <div class="hidden-xs">
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.list.plus/app/#/shared/{{list.list_owner}}/{{list.id}}" data-via="blindwormme">Tweet</a>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-      </div>
-    </div>
   </article>
 </section>
 <hr/>
