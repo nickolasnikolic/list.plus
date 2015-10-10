@@ -33,10 +33,10 @@ $app->get('/home', function(){
   $resultClasses = $stmtClasses->fetchAll(PDO::FETCH_ASSOC);
 
 
-  $stmtUser = $db->prepare('SELECT nickname FROM users WHERE userid = :userid;');
+  $stmtUser = $db->prepare('SELECT userid, nickname FROM users WHERE userid = :userid;');
   $stmtUser->bindParam(':userid', $resultClasses['list_owner']);
   $resultUser = $stmtUser->fetchAll(PDO::FETCH_ASSOC);
-  $resultClasses['contributor'] = $resultUser;
+  $resultClasses['contributor'] = $resultUser['nickname'];
 
   //then for each
   foreach ($resultClasses as &$class) {
