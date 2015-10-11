@@ -71,6 +71,7 @@ blindApp.controller('HomeController', ['$scope', '$state', 'globals', function($
       .success(function(data){
         $scope.lists = JSON.parse(data);
         $scope.$apply();
+        SocialShareKit.init();//sharekit
       });
 
 }])
