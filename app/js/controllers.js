@@ -1,12 +1,5 @@
 blindApp.controller('IndexController', ['$scope', '$state', 'globals', function($scope, $state, globals) {
-  SocialShareKit.init({
-    selector: '.ssk-group',
-    text: 'shared list',
-    twitter: {
-      text: 'shared list',
-      via: 'blindwormme'
-    }
-  });//sharekit
+  SocialShareKit.init();//sharekit
 }])
 
 blindApp.controller('HomeController', ['$scope', '$state', 'globals', function($scope, $state, globals) {
