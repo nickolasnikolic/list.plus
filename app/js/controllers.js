@@ -1,5 +1,11 @@
 blindApp.controller('IndexController', ['$scope', '$state', 'globals', function($scope, $state, globals) {
-  SocialShareKit.init();//sharekit
+  SocialShareKit.init({
+    text: 'shared list',
+    twitter: {
+      text: 'shared list',
+      via: 'blindwormme'
+    }
+  });//sharekit
 }])
 
 blindApp.controller('HomeController', ['$scope', '$state', 'globals', function($scope, $state, globals) {
