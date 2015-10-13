@@ -146,6 +146,11 @@ blindApp.controller('AdminController', ['$scope', '$state', 'globals', function(
 
   };
 
+  //clear text field
+  $scope.clear = function(){
+    $('#bookIsbn').val('');
+  };
+
   //on add book
   //add book
   $scope.addBook = function(){

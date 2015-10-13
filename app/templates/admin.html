@@ -62,7 +62,7 @@
       </div>
       <div class="modal-body">
         <div>
-          <p>isbn-10 or ASIN: <input ng-paste="amazonLookup()" ng-change="amazonLookup()" ng-model="book.ISBN" id="bookIsbn" type="text"></input></p>
+          <p>isbn-10 or ASIN: <input ng-paste="amazonLookup()" ng-change="amazonLookup()" ng-focus="clear()" ng-model="book.ISBN" id="bookIsbn" type="text"></input></p>
           <p><em>note: An ISBN-10 or ASIN number (directly from Amazon) should be used. NOT an ISBN-13 at this time. Usually, it can be taken directly from the book's bar code. If not, try looking up the book's Amazon.com page directly and pulling the ISBN-10 or ASIN from there.</em></p>
         </div>
         <div id="amazonListings"></div>
