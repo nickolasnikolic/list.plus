@@ -134,7 +134,7 @@ blindApp.controller('AdminController', ['$scope', '$state', 'globals', function(
     var isbn = $('#bookIsbn').val();
     if( isbn.length < 9 ){ return false; }
     else{
-      $.get( '../api/amazon/lookup' + isbn )
+      $.get( '../api/amazon/lookup/' + isbn )
           .success(function(data){
             console.log(data);
             $scope.book = data.Items.Item;
