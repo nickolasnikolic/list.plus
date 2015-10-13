@@ -68,11 +68,14 @@
         <div id="amazonListings"></div>
       </div>
       <div class="modal-footer" ng-if="book">
-        <p>{{book.Title}}</p>
-        <p>{{book.ISBN}}</p>
-        <p>{{book.Author}}</p>
-        <p>{{book.Publisher}}</p>
-        <p><button ng-click="addBook()" data-dismiss="modal" class="btn btn-default">this is the right item</button></p>
+        <section class="pull-left">
+          <p>{{book.Title}}</p>
+          <p>{{book.ISBN}}</p>
+          <p>{{book.Author}}</p>
+          <p>{{book.Publisher}}</p>
+        </section>
+        <p><button ng-click="clearBook()" class="btn btn-danger">not the right item</button></p>
+        <p><button ng-click="addBook()" data-dismiss="modal" class="btn btn-primary">this is the right item</button></p>
       </div>
     </div>
   </div>
