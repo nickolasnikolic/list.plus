@@ -144,6 +144,10 @@ blindApp.controller('AdminController', ['$scope', '$state', 'globals', function(
     }
   };
 
+  $scope.clearText = function(){ //clear the text field on focus
+    $('#bookIsbn').val('');
+  };
+
   //on add book
   //add book
   $scope.addBook = function(){
@@ -151,7 +155,6 @@ blindApp.controller('AdminController', ['$scope', '$state', 'globals', function(
     var admin = globals.getUserId();
     var book = $scope.book;
     $scope.book = {};//clearing it
-    $scope.$apply();
     book.ISBN = $('#bookIsbn').val();
 
     $('#bookIsbn').val('');
