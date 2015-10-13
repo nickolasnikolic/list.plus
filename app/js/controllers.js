@@ -137,7 +137,7 @@ blindApp.controller('AdminController', ['$scope', '$state', 'globals', function(
       $.get( '../api/amazon/small/lookup/' + isbn )
           .success(function(data){
             data = JSON.parse(data);
-            $scope.ISBN = isbn;
+            $scope.book.ISBN = isbn;
             $scope.book = data.Items.Item.ItemAttributes;
             console.log($scope.book);
           })
