@@ -147,7 +147,7 @@ blindApp.controller('AdminController', ['$scope', '$state', 'globals', function(
   };
 
   //clear text field
-  $scope.clear = function(){
+  $scope.clearTextInput = function(){
     $('#bookIsbn').val('');
   };
 
