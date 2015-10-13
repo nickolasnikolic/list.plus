@@ -151,8 +151,9 @@ blindApp.controller('AdminController', ['$scope', '$state', 'globals', function(
   //add book
   $scope.addBook = function(){
 
-    var book = $scope.book;
     var admin = globals.getUserId();
+    var book = $scope.book;
+    book.ISBN = $('#bookIsbn').val();
 
     $('#bookIsbn').val('');
 
