@@ -417,6 +417,27 @@ $app->get('/amazon/lookup/:asin', function( $asin ) {
 
 });
 
+$app->get('/amazon/small/lookup/:asin', function( $asin ) {
+
+  $conf = new GenericConfiguration();
+
+  $conf
+      ->setCountry('com')
+      ->setAccessKey(getenv('AMAZON_ACCESS'))
+      ->setSecretKey(getenv('AMAZON_SECRET'))
+      ->setAssociateTag(getenv('AMAZON_ASSOCIATE_TAG'));
+
+  $apaiIo = new ApaiIO($conf);
+
+  $lookup = new Lookup();
+  $lookup->setItemId($asin);
+  $lookup->setResponseGroup(array('Small')); // less detailed information
+
+  $response = $apaiIo->runOperation($lookup);
+
+  echo json_encode(simplexml_load_string($response));
+
+});
 
 $app->get('/amazon/similar/:asin', function( $asin ) {
 
