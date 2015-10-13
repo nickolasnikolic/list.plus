@@ -138,6 +138,7 @@ blindApp.controller('AdminController', ['$scope', '$state', 'globals', function(
           .success(function(data){
             data = JSON.parse(data);
             $scope.book = data.Items.Item.ItemAttributes;
+            console.log($scope.book);
           })
           .error(function(error){ console.log(error); });
     }
