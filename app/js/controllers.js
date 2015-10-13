@@ -153,6 +153,7 @@ blindApp.controller('AdminController', ['$scope', '$state', 'globals', function(
     var admin = globals.getUserId();
     var book = $scope.book;
     $scope.book = {};//clearing it
+    $scope.$apply();
     book.ISBN = $('#bookIsbn').val();
 
     $('#bookIsbn').val('');
