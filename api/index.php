@@ -4,6 +4,10 @@ require 'vendor/autoload.php';
 //for amazon
 use ApaiIO\ApaiIO;
 use ApaiIO\Configuration\GenericConfiguration;
+use ApaiIO\Operations\Search;
+use ApaiIO\Operations\BrowseNodeLookup;
+use ApaiIO\Operations\Lookup;
+use ApaiIO\Operations\SimilarityLookup;
 use ApaiIO\Operations\CartAdd;
 use ApaiIO\Operations\CartCreate;
 //for mail
