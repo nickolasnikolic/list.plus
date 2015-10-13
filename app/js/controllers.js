@@ -158,7 +158,7 @@ blindApp.controller('AdminController', ['$scope', '$state', 'globals', function(
     $('#bookIsbn').val('');
 
     if(book.Author instanceof Array()){
-      book.Author = book.Author.toString();
+      book.Author = JSON.stringify(book.Author);
     }
 
     //add to db
