@@ -67,10 +67,11 @@
         </div>
         <div id="amazonListings"></div>
       </div>
-      <div class="modal-footer">
-        <p>{{book.title}}</p>
-        <p>{{book.isbn}}</p>
-        <p>{{book.author}}</p>
+      <div class="modal-footer" ng-if="book.title">
+        <p>{{book.Title}}</p>
+        <p>{{book.ISBN}}</p>
+        <p>{{book.Author}}</p>
+        <p>{{book.Publisher}}</p>
         <p><button ng-click="addBook()" data-dismiss="modal" class="btn btn-default">this is the right item</button></p>
       </div>
     </div>
