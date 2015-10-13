@@ -130,6 +130,21 @@ blindApp.controller('AdminController', ['$scope', '$state', 'globals', function(
     classIndex = classId;
   };
 
+  $scope.amazonLookup = function(){
+    var isbn = $('#bookIsbn').val();
+    if( isbn.length < 9 ){ return false; }
+    else{
+      $.get( '../api/amazon/lookup' + isbn )
+          .success(function(data){
+            console.log(data);
+            $scope.book = data.Items.Item;
+          })
+          .error(function(error){ console.log(error); });
+    }
+
+
+  };
+
   //on add book
   //add book
   $scope.addBook = function(){
