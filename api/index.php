@@ -285,11 +285,15 @@ $app->post('/admin/remove/class/', function(){
 $app->post('/admin/add/book/', function(){
   //for this admin
   //pull the class details from the post
-  $name = htmlspecialchars($_POST['title']);
-  $author = htmlspecialchars($_POST['author']);
+  $name = $_POST['title'];
+  $author = $_POST['author'];
   $isbn = $_POST['isbn'];
   $classid = $_POST['class'];
   $administrator = $_POST['admin'];
+
+  if( is_array($author) ){
+    $author = join(',', $author);
+  }
 
   //set them in the db
 
