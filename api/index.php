@@ -286,7 +286,10 @@ $app->post('/admin/add/book/', function(){
   //for this admin
   //pull the class details from the post
   $name = $_POST['title'];
-  $author = $_POST['author'];
+
+  if(isset($_POST['author'])) {
+    $author = $_POST['author'];
+  }
   $isbn = $_POST['isbn'];
   $classid = $_POST['class'];
   $administrator = $_POST['admin'];
