@@ -142,8 +142,6 @@ blindApp.controller('AdminController', ['$scope', '$state', 'globals', function(
           })
           .error(function(error){ console.log(error); });
     }
-
-
   };
 
   //on add book
