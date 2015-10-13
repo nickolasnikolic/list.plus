@@ -136,7 +136,6 @@ blindApp.controller('AdminController', ['$scope', '$state', 'globals', function(
     else{
       $.get( '../api/amazon/lookup/' + isbn )
           .success(function(data){
-            console.log(data);
             $scope.book = data.Items.Item.ItemAttributes;
             console.log($scope.book);
           })
