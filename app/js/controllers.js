@@ -154,6 +154,7 @@ blindApp.controller('AdminController', ['$scope', '$state', 'globals', function(
 
     var admin = globals.getUserId();
     var book = $scope.book;
+    $scope.book = {};//clearing it
     book.ISBN = $('#bookIsbn').val();
 
     $('#bookIsbn').val('');
@@ -162,7 +163,6 @@ blindApp.controller('AdminController', ['$scope', '$state', 'globals', function(
     $.post('../api/admin/add/book/',{ 'title': book.Title, 'isbn': book.ISBN, 'author': book.Author, 'class': classIndex, 'admin': admin })
         .success(function(data){
           $scope.classes = JSON.parse(data); //HACK refreshing whole list when single book is added
-          $scope.book = {};//clearing it
           $scope.$apply();
         })
         .error(function(error){ console.log(error) });
