@@ -358,7 +358,7 @@ $app->get('/amazon/search/:keywords', function( $keywords ){
   $conf = new GenericConfiguration();
 
   $conf
-      ->setCountry('com')
+      ->setCountry(getenv('AMAZON_COUNTRY'))
       ->setAccessKey(getenv('AMAZON_ACCESS'))
       ->setSecretKey(getenv('AMAZON_SECRET'))
       ->setAssociateTag(getenv('AMAZON_ASSOCIATE_TAG'));
@@ -379,7 +379,7 @@ $app->get('/amazon/node/:browsenode', function( $browsenode ){
   $conf = new GenericConfiguration();
 
   $conf
-      ->setCountry('com')
+      ->setCountry(getenv('AMAZON_COUNTRY'))
       ->setAccessKey(getenv('AMAZON_ACCESS'))
       ->setSecretKey(getenv('AMAZON_SECRET'))
       ->setAssociateTag(getenv('AMAZON_ASSOCIATE_TAG'));
@@ -400,7 +400,7 @@ $app->get('/amazon/lookup/:asin', function( $asin ) {
   $conf = new GenericConfiguration();
 
   $conf
-      ->setCountry('com')
+      ->setCountry(getenv('AMAZON_COUNTRY'))
       ->setAccessKey(getenv('AMAZON_ACCESS'))
       ->setSecretKey(getenv('AMAZON_SECRET'))
       ->setAssociateTag(getenv('AMAZON_ASSOCIATE_TAG'));
@@ -422,7 +422,7 @@ $app->get('/amazon/small/lookup/:asin', function( $asin ) {
   $conf = new GenericConfiguration();
 
   $conf
-      ->setCountry('com')
+      ->setCountry(getenv('AMAZON_COUNTRY'))
       ->setAccessKey(getenv('AMAZON_ACCESS'))
       ->setSecretKey(getenv('AMAZON_SECRET'))
       ->setAssociateTag(getenv('AMAZON_ASSOCIATE_TAG'));
@@ -444,7 +444,7 @@ $app->get('/amazon/similar/:asin', function( $asin ) {
   $conf = new GenericConfiguration();
 
   $conf
-      ->setCountry('com')
+      ->setCountry(getenv('AMAZON_COUNTRY'))
       ->setAccessKey(getenv('AMAZON_ACCESS'))
       ->setSecretKey(getenv('AMAZON_SECRET'))
       ->setAssociateTag(getenv('AMAZON_ASSOCIATE_TAG'));
@@ -483,7 +483,7 @@ $app->get('/bouncy/:administrator/:thisclassid', function($administrator, $thisc
   $conf = new GenericConfiguration();
 
   $conf
-      ->setCountry('com')
+      ->setCountry(getenv('AMAZON_COUNTRY'))
       ->setAccessKey(getenv('AMAZON_ACCESS'))
       ->setSecretKey(getenv('AMAZON_SECRET'))
       ->setAssociateTag(getenv('AMAZON_ASSOCIATE_TAG'));
