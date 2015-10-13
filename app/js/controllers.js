@@ -157,8 +157,12 @@ blindApp.controller('AdminController', ['$scope', '$state', 'globals', function(
 
     $('#bookIsbn').val('');
 
+    if(book.Author instanceof Array()){
+      book.Author = book.Author.toString();
+    }
+
     //add to db
-    $.post('../api/admin/add/book/',{ 'title': book.Title, 'isbn': book.ISBN, 'author': book.Author.toString(), 'class': classIndex, 'admin': admin })
+    $.post('../api/admin/add/book/',{ 'title': book.Title, 'isbn': book.ISBN, 'author': book.Author, 'class': classIndex, 'admin': admin })
         .success(function(data){
           $scope.classes = JSON.parse(data); //HACK refreshing whole list when single book is added
           $scope.$apply();
