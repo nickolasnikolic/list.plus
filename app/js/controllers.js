@@ -140,7 +140,7 @@ blindApp.controller('AdminController', ['$scope', '$state', 'globals', function(
             data = JSON.parse(data);
             $scope.book.ISBN = isbn;
             $scope.book = data.Items.Item.ItemAttributes;
-            console.log($scope.book);
+            $scope.$apply();
           })
           .error(function(error){ console.log(error); });
     }
