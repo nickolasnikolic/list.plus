@@ -286,6 +286,7 @@ $app->post('/admin/add/book/', function(){
   //for this admin
   //pull the class details from the post
   $name = $_POST['title'];
+  $author = $_POST['author'];
   $isbn = $_POST['isbn'];
   $classid = $_POST['class'];
   $administrator = $_POST['admin'];
@@ -300,8 +301,9 @@ $app->post('/admin/add/book/', function(){
   $database = substr($url["path"], 1);
 
   $db = new PDO("mysql:host=$server;dbname=$database;charset=utf8", $user, $pass);
-  $stmtUserId = $db->prepare('INSERT INTO items (title, isbn, list) VALUES (:title, :isbn, :class);');
+  $stmtUserId = $db->prepare('INSERT INTO items (title, isbn, author, list) VALUES (:title, :isbn, :author, :class);');
   $stmtUserId->bindParam( ':title', $name );
+  $stmtUserId->bindParam( ':author', $author );
   $stmtUserId->bindParam( ':isbn', $isbn );
   $stmtUserId->bindParam( ':class', $classid );
   $stmtUserId->execute();

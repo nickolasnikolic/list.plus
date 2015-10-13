@@ -26,7 +26,7 @@
     <ul>
       <li ng-repeat="item in list.items">
         <a target="_blank" ng-href="http://www.amazon.com/gp/product/{{item.isbn}}/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN={{item.isbn}}&linkCode=as2&tag=blindworm03-20">
-        {{item.title}}
+        {{item.title}} <span ng-if="item.author != null"><strong>by: {{item.author}}</strong></span>
         </a>
       </li>
     </ul>

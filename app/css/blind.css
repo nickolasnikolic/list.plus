@@ -20,6 +20,11 @@ h1,h2,h3,h4,h5,h6,.san-serif{
 .little-down-below{
     margin-top: 1em;
 }
+
+.book-confirm{
+    text-align: left;
+}
+
 footer{
     margin-top: 5em;
 }
