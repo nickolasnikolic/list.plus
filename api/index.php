@@ -289,6 +289,8 @@ $app->post('/admin/add/book/', function(){
 
   if(isset($_POST['author'])) {
     $author = $_POST['author'];
+  }else{
+    $author = '';
   }
   $isbn = $_POST['isbn'];
   $classid = $_POST['class'];
