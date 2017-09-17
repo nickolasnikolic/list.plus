@@ -11,8 +11,7 @@ h1,h2,h3,h4,h5,h6,.san-serif{
 }
 
 .list{
-    border: 1px thin black;
-    border-radius: 3%;
+    min-height: 40em;
 }
 .little-up-top{
     margin-top: 1em;
