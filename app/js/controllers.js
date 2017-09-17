@@ -207,7 +207,7 @@ blindApp.controller('SharedController', ['$scope', '$state', '$stateParams', fun
       .success(function(data){
         $scope.list = JSON.parse(data);
         $scope.$apply();
-        SocialShareKit.init();//sharekit
+        //SocialShareKit.init();//sharekit
       });
 
 }])
